@@ -1,0 +1,30 @@
+---
+title: "LifeExp vs. gdpPercap"
+author: "Hunter Goehring"
+date: "2023-02-18"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+data = read.csv("/Users/huntergoehring/Documents/DS202/gapminder-5060.csv", header = TRUE)
+head(data)
+us = data[data$country == "United States", ]
+australia = data[data$country == "Australia", ]
+canada = data[data$country == "Canada", ]
+canada$lifeExp[canada$year == 1957] = 69.96
+
+plot(x=us$lifeExp, y=us$gdpPercap, type='l', xlab="Life Expectancy", ylab = "GDP per capita")
+lines(x = us$lifeExp, y = us$gdpPercap)
+
+plot(x=canada$lifeExp, y=canada$gdpPercap, type='l', xlab="Life Expectancy", ylab = "GDP per capita")
+lines(x = canada$lifeExp, y = canada$gdpPercap)
+
+plot(x=australia$lifeExp, y=australia$gdpPercap, type='l', xlab="Life Expectancy", ylab = "GDP per capita")
+lines(x = australia$lifeExp, y = australia$gdpPercap)
+```
+
